@@ -1,11 +1,25 @@
 #!/bin/bash -x
 
-result=$((RANDOM%2))
-isHeads=1
 
-if [ $result -eq $isHeads ]
-then
+isHeads=1
+Head=0
+Tail=0
+
+read -p "Number of times Coin Flip :" flip
+
+
+for (( i=1; i<=$flip ; i++ ))
+do
+	result=$((RANDOM%2))
+	if [ $result -eq $isHeads ]
+	then
 		echo Heads
-else
+		Head=$(($Head+1))
+	else
 		echo Tails
-fi
+		Tail=$(($Tail+1))
+	fi
+done
+
+echo "Number of Times Heads Won :"$Head
+echo "Number of Times Tails Won :"$Tail
